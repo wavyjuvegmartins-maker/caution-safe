@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
+import { themeInitScript } from "@/lib/site";
 import "./fonts.css";
+import "./theme.css";
 import "./globals.css";
 
 // IBM Plex is self-hosted (public/fonts, src/app/fonts.css) because next/font/google
@@ -19,13 +21,17 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#F7F5F0",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F7F5F0" },
+    { media: "(prefers-color-scheme: dark)", color: "#161513" },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-NG">
+    <html lang="en-NG" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {preload.map((href) => (
           <link key={href} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="anonymous" />
         ))}

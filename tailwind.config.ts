@@ -4,17 +4,22 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
+    // Colours are CSS variables (src/app/theme.css) so light and dark themes share
+    // one set of names. Light values are the SPEC section 6 palette exactly.
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      paper: "#F7F5F0",
-      card: "#FFFFFF",
-      ink: { DEFAULT: "#1C1B19", muted: "#6B6860" },
-      rule: "#E2DED5",
-      green: "#1F6B4A",
-      amber: "#A86B12",
-      red: "#B3261E",
-      "stamp-bg": "#EAF2EC",
+      paper: "rgb(var(--paper) / <alpha-value>)",
+      card: "rgb(var(--card) / <alpha-value>)",
+      ink: {
+        DEFAULT: "rgb(var(--ink) / <alpha-value>)",
+        muted: "rgb(var(--ink-muted) / <alpha-value>)",
+      },
+      rule: "rgb(var(--rule) / <alpha-value>)",
+      green: "rgb(var(--green) / <alpha-value>)",
+      amber: "rgb(var(--amber) / <alpha-value>)",
+      red: "rgb(var(--red) / <alpha-value>)",
+      "stamp-bg": "rgb(var(--stamp-bg) / <alpha-value>)",
     },
     fontFamily: {
       sans: ["\"IBM Plex Sans\"", "system-ui", "sans-serif"],

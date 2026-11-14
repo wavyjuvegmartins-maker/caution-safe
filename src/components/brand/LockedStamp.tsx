@@ -13,12 +13,12 @@ export function LockedStamp({ lockedAt, contentHash }: { lockedAt: Date; content
   return (
     <svg viewBox="0 0 240 84" width="240" height="84" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Signed by both parties">
       <g transform="rotate(-4 120 42)">
-        <rect x="6" y="10" width="228" height="64" rx="4" fill="#EAF2EC" stroke="#1F6B4A" strokeWidth="1.5" />
-        <rect x="11" y="15" width="218" height="54" rx="2" stroke="#1F6B4A" strokeWidth="0.75" />
-        <text x="120" y="38" textAnchor="middle" fontFamily="IBM Plex Sans, sans-serif" fontWeight="600" fontSize="13" letterSpacing="1.2" fill="#1F6B4A">
+        <rect x="6" y="10" width="228" height="64" rx="4" className="fill-stamp-bg stroke-green" strokeWidth="1.5" />
+        <rect x="11" y="15" width="218" height="54" rx="2" className="stroke-green" strokeWidth="0.75" />
+        <text x="120" y="38" textAnchor="middle" fontFamily="IBM Plex Sans, sans-serif" fontWeight="600" fontSize="13" letterSpacing="1.2" className="fill-green">
           SIGNED BY BOTH PARTIES
         </text>
-        <text x="120" y="58" textAnchor="middle" fontFamily="IBM Plex Mono, monospace" fontSize="11" fill="#1F6B4A">
+        <text x="120" y="58" textAnchor="middle" fontFamily="IBM Plex Mono, monospace" fontSize="11" className="fill-green">
           {`${date} · #${shortHash}`}
         </text>
       </g>

@@ -1,12 +1,11 @@
 import { createHash } from "node:crypto";
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { LockedStamp } from "@/components/brand/LockedStamp";
-import { Wordmark } from "@/components/brand/Logo";
 import { CameraIcon } from "@/components/brand/icons";
 import { ConditionPicker } from "@/components/inspection/ConditionPicker";
 import { AppScreen, ScreenButton } from "@/components/marketing/AppScreen";
+import { SiteHeader } from "@/components/site/SiteHeader";
 import { ButtonLink } from "@/components/ui/Button";
 import { ConditionBadge } from "@/components/ui/ConditionBadge";
 import { MoneyRow } from "@/components/ui/MoneyRow";
@@ -15,6 +14,7 @@ import { sampleDeductions, sampleRooms, sampleTenancy as t } from "@/content/sam
 import { formatCaptureTime, formatDay } from "@/lib/dates";
 import { formatKobo } from "@/lib/money";
 import { summariseSettlement } from "@/lib/settlement";
+import { START_HREF } from "@/lib/site";
 import { localPhoto } from "./local-photo";
 
 export const metadata: Metadata = {
@@ -34,22 +34,13 @@ const settlement = summariseSettlement(
 );
 
 const tapPhotoAt = new Date(t.moveInAt.getTime() + 60_000);
-const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
 
 export default function HomePage() {
   const kitchen = localPhoto("kitchen.jpg");
 
   return (
     <div className="mx-auto max-w-wide px-4 sm:px-8">
-      <header className="flex items-center justify-between py-4">
-        <Link href="/" className={`rounded-md ${focusRing}`}>
-          <Wordmark />
-        </Link>
-        <Link href="/login" className={`font-medium underline decoration-rule underline-offset-4 hover:decoration-ink ${focusRing}`}>
-          Sign in
-        </Link>
-      </header>
+      <SiteHeader />
 
       <main>
         {/* ---------------------------------------------------------------- */}
@@ -62,11 +53,11 @@ export default function HomePage() {
               CautionSafe is a move-in report for rented flats in Nigeria. Landlord and tenant photograph every room
               together and both sign by phone. At move-out, the same photos settle what comes off the caution fee.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink href="/login">Start a move-in report</ButtonLink>
-              <a href="#how" className={`rounded-md px-1 py-2 font-medium underline decoration-rule underline-offset-4 hover:decoration-ink ${focusRing}`}>
+            <div className="mt-6 grid gap-2 sm:flex sm:items-center sm:gap-3">
+              <ButtonLink href={START_HREF}>Start a move-in report</ButtonLink>
+              <ButtonLink href="#how" variant="secondary">
                 See how it works
-              </a>
+              </ButtonLink>
             </div>
             <p className="mt-4 text-xs text-ink-muted">Works in your phone&apos;s browser. Nothing to install.</p>
           </div>
@@ -401,7 +392,7 @@ export default function HomePage() {
           </h2>
           <p className="mt-2 text-ink-muted">Landlords and agents start the report. Tenants join from the SMS link.</p>
           <div className="mt-4">
-            <ButtonLink href="/login" className="w-full sm:w-auto">
+            <ButtonLink href={START_HREF} className="w-full sm:w-auto">
               Start a move-in report
             </ButtonLink>
           </div>
