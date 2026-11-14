@@ -52,7 +52,8 @@ const config: Config = {
       sheet: "0 -2px 12px rgba(28, 27, 25, 0.12)",
     },
     extend: {
-      maxWidth: { doc: "720px" },
+      // doc: app screens (SPEC section 6). wide: homepage visuals only (approved 14 Nov 2026).
+      maxWidth: { doc: "720px", wide: "1120px" },
       // 12% tint for selected condition states (SPEC section 6, ConditionPicker).
       opacity: { 12: "0.12" },
     },
