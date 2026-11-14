@@ -1,0 +1,2 @@
+-- Sample data comes in milestone 2, once phone auth exists (profiles need auth.users rows).
+-- Planned: landlord Chinedu Okafor (Aba), tenant Ngozi Eze, property 'Flat 3, 12 Okigwe Rd, Aba'.

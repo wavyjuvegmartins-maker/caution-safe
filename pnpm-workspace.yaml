@@ -1,0 +1,6 @@
+# pnpm 11+
+allowBuilds:
+  esbuild: true
+# pnpm 10 (Vercel default when corepack is off)
+onlyBuiltDependencies:
+  - esbuild
